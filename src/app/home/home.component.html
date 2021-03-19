@@ -1,0 +1,45 @@
+
+<form class="login form-horozontal" [formGroup]="employes" *ngIf='employeeById'>
+    <div >
+    <div class="form-group">
+      <label for="email">Employee Name</label>
+      <input type="email" formControlName="name" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Employee Salary</label>
+      <input type="text" formControlName="salary" value="{{employeeById.employee_salary}}" class="form-control" id="pwd">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Employee Age</label>
+        <input type="text" formControlName="age" value="{{employeeById.employee_age}}" class="form-control" id="pwd">
+      </div>
+
+    <button type="submit" style="text-align: center;" (click)="update(employeeById.id)"  class="btn btn-primary">Submit</button>
+</div>
+  </form>
+ 
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th item-width="100">Id</th>
+        <th item-width="400">Employee Name</th>
+        <th item-width="400">Employee Salary</th>
+        <th item-width="400">Employee Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let emp of employee;let i=index">
+      
+      <tr *ngIf="emp">
+        <td>{{emp.id}}</td>
+        <td>{{emp.employee_name}}</td>
+        <td>{{emp.employee_salary}}</td>
+        <td>{{emp.employee_age}}</td>
+        <td>
+         <button  class="btn btn-success " (click)="editEmp(emp.id)" >Edit</button>&nbsp;&nbsp;
+          <a class="btn btn-danger" (click)="deleteEmp(emp.id)">Delete</a>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>

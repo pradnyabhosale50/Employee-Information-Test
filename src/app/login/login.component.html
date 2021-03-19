@@ -1,0 +1,91 @@
+ 
+
+ <div class="row">
+    <div class="col-md-6 mx-auto p-0">
+        <div class="card">
+            <div class="login-box">
+                <div style="margin-left: 75%; margin-right: 40%;"  class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                    <div class="login-space " >
+                        <div class="login form-horozontal" [formGroup]="login">
+                            <div class="group"> 
+                                <label for="user" class="label">Email</label> 
+                                <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f3.email.errors }" id="user" type="text" class="input" placeholder="Enter your username">
+                                <div *ngIf="submitted && f3.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f3.email.errors.required"> Email is required</div>
+                                 </div>
+                            </div>
+                            <div class="group"> 
+                                <label for="pass" class="label">Password</label> 
+                                <input formControlName="pass" id="pass" type="password" class="input" data-type="password" placeholder="Enter your password">
+                                <div *ngIf="submitted && f3.pass.errors" class="invalid-feedback">
+                                    <div *ngIf="f3.pass.errors.required"> Password is required</div>
+                                 </div>
+                             </div>
+
+                            <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
+                            <div class="group"> <input (click)="onLogin()" type="submit" class="button"  value="Sign In"> </div>
+                            <div class="hr"></div>
+                            <div class="foot"> <a href="#">Forgot Password?</a> </div>
+                        </div>
+
+
+
+                        <div class="sign-up-form form-horozontal" [formGroup]="registration">
+                            <div class="group"> 
+                                <label for="user" class="label">Username</label>
+                                 <input id="user" type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f4.username.errors }" class="input" placeholder="Create your Username">
+                                 <div *ngIf="submitted && f4.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f4.username.errors.required"> Username is required</div>
+                                 </div>
+                            </div>
+                            <div class="group">
+                                 <label for="pass" class="label">Password</label> 
+                                 <input id="pass" type="password" formControlName="regpass" [ngClass]="{ 'is-invalid': submitted && f4.regpass.errors }" class="input" data-type="password" placeholder="Create your password"> 
+                                 <div *ngIf="submitted && f4.regpass.errors" class="invalid-feedback">
+                                    <div *ngIf="f4.regpass.errors.required">Password is required</div>
+                                 </div>
+                             </div>
+                            <div class="group"> 
+                                <label for="pass" class="label">Email Address</label>
+                                 <input id="pass" type="text" formControlName="resEmail" [ngClass]="{ 'is-invalid': submitted && f4.resEmail.errors }" class="input" placeholder="Enter your email address"> 
+                                 <div *ngIf="submitted && f4.resEmail.errors" class="invalid-feedback">
+                                    <div *ngIf="f4.resEmail.errors.required">Email is required</div>
+                                 </div>
+                            </div>
+                            <div class="group">
+                                <label for="gender">Gender:</label>
+                                <div>
+                                  <input id="male" type="radio" value="male" name="gender" formControlName="gender" (change)="changeGender($event)">
+                                  <label for="male">Male</label>
+                               </div>
+                      
+                               <div>
+                                  <input id="female" type="radio" value="female" name="gender" formControlName="gender" (change)="changeGender($event)">
+                                  <label for="female">Female</label>
+                               </div>
+                               <div *ngIf="submitted && f4.gender.errors" class="invalid-feedback">
+                                <div *ngIf="f4.gender.errors.required">Gender is required</div>
+                             </div>
+                                 
+                            </div>
+                            <div class="group">
+                                <label for="gender">Skills:</label>
+                                <ul style="list-style-type:none;padding-inline-start: 15px; margin-top: 5px;" class="checkbox-items">
+                                    <li *ngFor="let item of checkboxesDataList">
+                                      <input type="checkbox" [value]="item.label" formControlName="skillCheck" (change)="changeSelection($event)">{{item.label}}
+                                    </li>
+                                  </ul>
+                                  <div *ngIf="submitted && f4.skillCheck.errors" class="invalid-feedback">
+                                    <div *ngIf="f4.skillCheck.errors.required">Skills are required</div>
+                                 </div>
+                            </div>
+                            <div class="group"> <input (click)="onSignup()" type="submit" class="button" value="Sign Up"> </div>
+                            <div class="hr"></div>
+                            <div class="foot"> <label for="tab-1">Already Member?</label> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
